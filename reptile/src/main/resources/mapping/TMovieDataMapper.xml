@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.reptile.common.logic.dao.TMovieDataMapper" >
+  <resultMap id="BaseResultMap" type="com.reptile.common.logic.entity.TMovieData" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="dou_ban_val" property="douBanVal" jdbcType="DOUBLE" />
+    <result column="movie_actor" property="movieActor" jdbcType="VARCHAR" />
+    <result column="movie_down_load_source_url" property="movieDownLoadSourceUrl" jdbcType="VARCHAR" />
+    <result column="movie_img_url" property="movieImgUrl" jdbcType="VARCHAR" />
+    <result column="movie_name" property="movieName" jdbcType="VARCHAR" />
+    <result column="movie_nation" property="movieNation" jdbcType="VARCHAR" />
+    <result column="movie_source_url" property="movieSourceUrl" jdbcType="VARCHAR" />
+    <result column="release_year" property="releaseYear" jdbcType="INTEGER" />
+    <result column="grab_platfrom" property="grabPlatfrom" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, update_time, dou_ban_val, movie_actor, movie_down_load_source_url, 
+    movie_img_url, movie_name, movie_nation, movie_source_url, release_year, grab_platfrom
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_movie_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_movie_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.reptile.common.logic.entity.TMovieData" >
+    insert into t_movie_data (id, create_time, update_time, 
+      dou_ban_val, movie_actor, movie_down_load_source_url, 
+      movie_img_url, movie_name, movie_nation, 
+      movie_source_url, release_year, grab_platfrom
+      )
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{douBanVal,jdbcType=DOUBLE}, #{movieActor,jdbcType=VARCHAR}, #{movieDownLoadSourceUrl,jdbcType=VARCHAR}, 
+      #{movieImgUrl,jdbcType=VARCHAR}, #{movieName,jdbcType=VARCHAR}, #{movieNation,jdbcType=VARCHAR}, 
+      #{movieSourceUrl,jdbcType=VARCHAR}, #{releaseYear,jdbcType=INTEGER}, #{grabPlatfrom,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.reptile.common.logic.entity.TMovieData" >
+    insert into t_movie_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="douBanVal != null" >
+        dou_ban_val,
+      </if>
+      <if test="movieActor != null" >
+        movie_actor,
+      </if>
+      <if test="movieDownLoadSourceUrl != null" >
+        movie_down_load_source_url,
+      </if>
+      <if test="movieImgUrl != null" >
+        movie_img_url,
+      </if>
+      <if test="movieName != null" >
+        movie_name,
+      </if>
+      <if test="movieNation != null" >
+        movie_nation,
+      </if>
+      <if test="movieSourceUrl != null" >
+        movie_source_url,
+      </if>
+      <if test="releaseYear != null" >
+        release_year,
+      </if>
+      <if test="grabPlatfrom != null" >
+        grab_platfrom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="douBanVal != null" >
+        #{douBanVal,jdbcType=DOUBLE},
+      </if>
+      <if test="movieActor != null" >
+        #{movieActor,jdbcType=VARCHAR},
+      </if>
+      <if test="movieDownLoadSourceUrl != null" >
+        #{movieDownLoadSourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="movieImgUrl != null" >
+        #{movieImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="movieName != null" >
+        #{movieName,jdbcType=VARCHAR},
+      </if>
+      <if test="movieNation != null" >
+        #{movieNation,jdbcType=VARCHAR},
+      </if>
+      <if test="movieSourceUrl != null" >
+        #{movieSourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseYear != null" >
+        #{releaseYear,jdbcType=INTEGER},
+      </if>
+      <if test="grabPlatfrom != null" >
+        #{grabPlatfrom,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.reptile.common.logic.entity.TMovieData" >
+    update t_movie_data
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="douBanVal != null" >
+        dou_ban_val = #{douBanVal,jdbcType=DOUBLE},
+      </if>
+      <if test="movieActor != null" >
+        movie_actor = #{movieActor,jdbcType=VARCHAR},
+      </if>
+      <if test="movieDownLoadSourceUrl != null" >
+        movie_down_load_source_url = #{movieDownLoadSourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="movieImgUrl != null" >
+        movie_img_url = #{movieImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="movieName != null" >
+        movie_name = #{movieName,jdbcType=VARCHAR},
+      </if>
+      <if test="movieNation != null" >
+        movie_nation = #{movieNation,jdbcType=VARCHAR},
+      </if>
+      <if test="movieSourceUrl != null" >
+        movie_source_url = #{movieSourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="releaseYear != null" >
+        release_year = #{releaseYear,jdbcType=INTEGER},
+      </if>
+      <if test="grabPlatfrom != null" >
+        grab_platfrom = #{grabPlatfrom,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.reptile.common.logic.entity.TMovieData" >
+    update t_movie_data
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      dou_ban_val = #{douBanVal,jdbcType=DOUBLE},
+      movie_actor = #{movieActor,jdbcType=VARCHAR},
+      movie_down_load_source_url = #{movieDownLoadSourceUrl,jdbcType=VARCHAR},
+      movie_img_url = #{movieImgUrl,jdbcType=VARCHAR},
+      movie_name = #{movieName,jdbcType=VARCHAR},
+      movie_nation = #{movieNation,jdbcType=VARCHAR},
+      movie_source_url = #{movieSourceUrl,jdbcType=VARCHAR},
+      release_year = #{releaseYear,jdbcType=INTEGER},
+      grab_platfrom = #{grabPlatfrom,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+<!-- ========================================================业务代码======================================================== -->  
+  <select id="findAllMovie" resultMap="BaseResultMap">
+     select  id, create_time, update_time, 
+      dou_ban_val, movie_actor, movie_down_load_source_url, 
+      movie_img_url, movie_name, movie_nation, 
+      movie_source_url from t_movie_data order by dou_ban_val desc
+  </select>
+
+
+<!-- ========================================================业务代码======================================================== -->
+</mapper>
